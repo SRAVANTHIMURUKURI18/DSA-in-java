@@ -1,0 +1,33 @@
+class Bs{
+    public static int bSearch(int a[],int t){
+		int n=a.length;
+		int low=0;
+		int high=n-1;
+		    while(low<=high){
+		    int mid=low+(high-low)/2;
+		    if(a[mid]==t){
+		       return mid;
+		       }
+		    if(a[mid]>t){
+               high=mid-1;
+               }
+            else{
+               low=mid+1;
+               }
+               }   
+                return -1;
+              }
+          
+        
+     public static void main(String args[]){
+     int a[]={34,65,83,24,21,93};
+     int t=93;          
+     int result=bSearch(a,t);
+     if(result!=-1){
+         System.out.println("The element is at location: "+result);
+         }
+     else{
+         System.out.println("Element is not found");
+         }
+     }
+     }
