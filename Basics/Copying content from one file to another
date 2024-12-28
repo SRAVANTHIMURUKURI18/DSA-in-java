@@ -1,0 +1,27 @@
+import java.io.*;
+
+public class FileCopy {
+    public static void main(String[] args) throws IOException {
+  
+        String sourceFile = "source.txt";
+        String destinationFile = "destination.txt";
+
+        copyFile(sourceFile, destinationFile);
+        System.out.println("File copied successfully!");
+    }
+
+    public static void copyFile(String sourceFile, String destinationFile) throws IOException {
+        
+        FileInputStream inStream = new FileInputStream(sourceFile);
+        FileOutputStream outStream = new FileOutputStream(destinationFile);
+
+        int byteData;
+       
+        while ((byteData = inStream.read()) != -1) {
+            outStream.write(byteData);
+        }
+
+        inStream.close();
+        outStream.close();
+    }
+}
