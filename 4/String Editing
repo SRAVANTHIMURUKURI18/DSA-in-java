@@ -25,3 +25,10 @@ public class EditDistance {
                  System.out.println("Minimum edit distance: "+minEditDistance(X,Y));
        }
 }                                                                               
+
+
+
+op:
+Enter first string: aabaababaa
+Enter second string: babaabab
+Minimum edit distance: 4
