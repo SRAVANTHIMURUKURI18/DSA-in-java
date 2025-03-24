@@ -17,27 +17,22 @@ class Graph {
         adjList.get(dest).add(src); // Assuming an undirected graph
     }
 
-    public void BFT(int startVertex) {
+    public void DFT(int startVertex) {
         boolean[] visited = new boolean[vertices];
-        Queue<Integer> queue = new LinkedList<>();
-        
-        visited[startVertex] = true;
-        queue.add(startVertex);
-        
-        System.out.print("Breadth-First Traversal: ");
-        
-        while (!queue.isEmpty()) {
-            int vertex = queue.poll();
-            System.out.print(vertex + " ");
-            
-            for (int neighbor : adjList.get(vertex)) {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    queue.add(neighbor);
-                }
+        System.out.print("Depth-First Traversal: ");
+        DFSUtil(startVertex, visited);
+        System.out.println();
+    }
+
+    private void DFSUtil(int vertex, boolean[] visited) {
+        visited[vertex] = true;
+        System.out.print(vertex + " ");
+
+        for (int neighbor : adjList.get(vertex)) {
+            if (!visited[neighbor]) {
+                DFSUtil(neighbor, visited);
             }
         }
-        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -49,7 +44,7 @@ class Graph {
         g.addEdge(2, 4);
         g.addEdge(3, 5);
         g.addEdge(4, 5);
-        
-        g.BFT(0); // Starting from vertex 0
+
+        g.DFT(0); // Starting from vertex 0
     }
 }
